@@ -1,0 +1,40 @@
+[package]
+authors = ["Michael Lodder <redmike7@gmail.com>"]
+categories = ["cryptography"]
+description = "Post Quantum Hybrid Encryption for multiple recipients"
+documentation = "https://docs.rs/pq-envelope"
+edition = "2024"
+homepage = "https://crates.io/crates/pq-envelope"
+keywords = ["quantum", "encryption", "hybrid", "broadcast", "multicast"]
+license = "Apache-2.0 or MIT"
+name = "pq-envelope"
+readme = "README.md"
+repository = "https://github.com/mikelodder7/pq-envelope"
+version = "0.1.0"
+
+[dependencies]
+aes-gcm = "0.10"
+aes-kw = "0.2"
+derive_more = { version = "2", features = ["display", "from_str", "try_from", "try_into"] }
+hex = "0.4"
+oqs = "0.11"
+rand = "0.9"
+rkyv = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde-big-array = "0.5"
+thiserror = "2.0"
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+sha3 = { version = "0.10", features = ["asm"] }
+zeroize = { version = "1", features = ["aarch64"] }
+
+[target.'cfg(not(target_arch = "aarch64"))'.dependencies]
+sha3 = { version = "0.10" }
+
+[target.'cfg(any(target_arch = "x86_64", target_arch = "x86"))'.dependencies]
+zeroize = { version = "1", features = ["simd"] }
+
+[dev-dependencies]
+rstest = "0.26"
+postcard = { version = "1", features = ["use-std"] }
+serde_json = "1.0"
