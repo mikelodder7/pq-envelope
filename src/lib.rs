@@ -44,6 +44,24 @@
 //! | Small | 261,120 | 6,492 | 96 Cap + 40 KW = 136 |
 //! | Secure | 21,520 | 43,088 | 21,632 Cap + 40 KW = 22,303 |
 //!
+//! # Why ClassicMcEliece, FrodoKEM and ML-KEM
+//!
+//! See [Daniel Bernstein's Blog](https://blog.cr.yp.to/20250423-mceliece.html) on this which says
+//! 
+//! "ISO Standardization.  ISO has strict secrecy rules regarding its deliberations, 
+//! but it does make some procedural information public. 
+//! In particular, if you poke around the web page for [ISO project 86890](https://www.iso.org/standard/86890.html) 
+//! then you'll see that the project is currently considering a 
+//! Draft International Standard (DIS) that includes 
+//! Classic McEliece, FrodoKEM, and ML-KEM, 
+//! as an amendment to an existing standard, ISO/IEC 18033-2.
+//!
+//! This doesn't guarantee anything...Still, the fact that ISO is considering a draft sounds good."
+//!
+//! The TL;DR is thus: If static-keys are possible i.e. distribute the keys once and their
+//! life-cycle is long, use `Scheme::Small`. If the keys are short-lived and/or ephemeral
+//! use `Scheme::Nist` or `Scheme::Secure`.
+//!
 //! # Usage
 //! To create a receiver, select an appropriate scheme and create their keys:
 //! ```
