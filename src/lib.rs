@@ -95,6 +95,7 @@
 
 mod envelope;
 mod error;
+mod keys;
 mod recipient;
 mod scheme;
 mod util;
@@ -143,5 +144,6 @@ pub const SCHEME_NIST_SHARED_SECRET_LENGTH: usize =
 
 pub use envelope::Envelope;
 pub use error::{Error, Result};
+pub use keys::*;
 pub use recipient::Recipient;
 pub use scheme::Scheme;

@@ -10,7 +10,7 @@ license = "Apache-2.0 or MIT"
 name = "pq-envelope"
 readme = "README.md"
 repository = "https://github.com/mikelodder7/pq-envelope"
-version = "0.1.0"
+version = "0.2.0"
 
 [dependencies]
 aes-gcm = "0.10"
@@ -21,6 +21,7 @@ oqs = "0.11"
 rand = "0.9"
 rkyv = "0.8"
 serde = { version = "1", features = ["derive"] }
+serdect = "0.4"
 serde-big-array = "0.5"
 thiserror = "2.0"
 

@@ -65,6 +65,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "base16ct"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d8b59d472eab27ade8d770dcb11da7201c11234bef9f82ce7aa517be028d462b"
+
+[[package]]
 name = "bindgen"
 version = "0.71.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -674,7 +680,7 @@ dependencies = [
 
 [[package]]
 name = "pq-envelope"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
  "aes-gcm",
  "aes-kw",
@@ -688,6 +694,7 @@ dependencies = [
  "serde",
  "serde-big-array",
  "serde_json",
+ "serdect",
  "sha3",
  "thiserror",
  "zeroize",
@@ -995,6 +1002,16 @@ dependencies = [
  "ryu",
  "serde",
  "serde_core",
+]
+
+[[package]]
+name = "serdect"
+version = "0.4.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d3ef0e35b322ddfaecbc60f34ab448e157e48531288ee49fafbb053696b8ffe2"
+dependencies = [
+ "base16ct",
+ "serde",
 ]
 
 [[package]]

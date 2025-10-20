@@ -1,4 +1,4 @@
-use crate::Error;
+use crate::{Error, PublicKey, SecretKey};
 use derive_more::{Display, FromStr, TryFrom, TryInto};
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 use sha3::{
@@ -162,10 +162,10 @@ impl TryFrom<oqs::kem::Algorithm> for Scheme {
 
 impl Scheme {
     /// Generate a new public/private key pair for the specified scheme.
-    pub fn key_pair(&self) -> crate::Result<(oqs::kem::PublicKey, oqs::kem::SecretKey)> {
+    pub fn key_pair(&self) -> crate::Result<(PublicKey, SecretKey)> {
         let kem: oqs::kem::Kem = self.into();
         let (pk, sk) = kem.keypair()?;
-        Ok((pk, sk))
+        Ok((pk.into(), sk.into()))
     }
     #[cfg(test)]
     pub(crate) const fn recipient_binary_size(&self) -> usize {

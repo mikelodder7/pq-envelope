@@ -151,7 +151,7 @@ impl Envelope {
     /// Optionally, an already existing data encryption key can be provided.
     /// However, if it is not provided, a new one will be created.
     pub fn new<B: AsRef<[u8]>>(
-        recipients: &[oqs::kem::PublicKey],
+        recipients: &[PublicKey],
         data: B,
         data_encryption_key: Option<[u8; 32]>,
     ) -> Result<Self> {
@@ -202,7 +202,7 @@ impl Envelope {
     /// until one succeeds. If none succeed, an error is returned.
     pub fn decrypt_by_recipient_secret_key(
         &self,
-        recipient_secret_key: &oqs::kem::SecretKey,
+        recipient_secret_key: &SecretKey,
     ) -> Result<Vec<u8>> {
         let scheme = scheme_from_secret_key_length(recipient_secret_key.as_ref().len())?;
         for recipient in &self.recipients {
@@ -220,7 +220,7 @@ impl Envelope {
     pub fn decrypt_by_recipient_index(
         &self,
         index: usize,
-        recipient_secret_key: &oqs::kem::SecretKey,
+        recipient_secret_key: &SecretKey,
     ) -> Result<Vec<u8>> {
         if index >= self.recipients.len() {
             return Err(Error::InvalidDecapsulationKey);
